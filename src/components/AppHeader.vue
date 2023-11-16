@@ -1,5 +1,5 @@
 <template>
-    <header>
-        <h1 class="bg-red-600">Expense Tracker</h1>
+    <header class="section-container py-10 text-center">
+        <h1 class="text-4xl font-bold">Expense Tracker</h1>
     </header>
 </template>
