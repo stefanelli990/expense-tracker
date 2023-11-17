@@ -6,16 +6,16 @@
         <div class="bg-white rounded-xl p-6 w-1/2">
             <h2 class="text-xl font-semibold mb-6">Edit Budget</h2>
             <div class="flex justce items-end space-x-2">
-                <AppInputs label="Your Budget"/>
-                <AppButtons>Set Budget</AppButtons>
+                <AppInputs v-model="budget" type="number" label="Your Budget"/>
+                <AppButtons @click="setBudget">Set Budget</AppButtons>
             </div>
         </div>
         <div class="bg-white rounded-xl p-6 w-1/2">
             <h2 class="text-xl font-semibold mb-6">Add New Transaction</h2>
             <div class="flex justce items-end space-x-2">
-                <AppInputs label="Transaction Name"/>
-                <AppInputs label="Transaction Cost"/>
-                <AppButtons>Add</AppButtons>
+                <AppInputs v-model="transactionName" type="text" label="Transaction Name"/>
+                <AppInputs v-model="transactionCost" type="number" label="Transaction Cost"/>
+                <AppButtons @click="addTransaction">Add</AppButtons>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
           <Icon width="48" height="48" class="text-blue-500" icon="ph:wallet-fill" />
         </div>
         <div>
-          <h2 class="text-2xl font-semibold">$100</h2>
+          <h2 class="text-2xl font-semibold">${{ budget }}</h2>
           <p class="text-md font-semibold">Budget</p>
         </div>
       </div>
@@ -36,7 +36,7 @@
           <Icon width="48" height="48" class="text-yellow-500" icon="fluent:money-hand-16-filled" />
         </div>
         <div>
-          <h2 class="text-2xl font-semibold">$70</h2>
+          <h2 class="text-2xl font-semibold">${{ expenses }}</h2>
           <p class="text-md font-semibold">Expenses</p>
         </div>
       </div>
@@ -47,50 +47,73 @@
         </div>
         <div>
           <div class="flex items-center space-x-1">
-            <h2 class="text-2xl font-semibold">$30</h2><div>
+            <h2 class="text-2xl font-semibold">${{ balance }}</h2><div>
               <Icon width="20" height="20" class="text-green-500" icon="ph:arrow-up-left-bold" />
               <!-- <Icon class="text-red-500" icon="ph:arrow-down-left-bold" /> -->
             </div>
           </div>
-          <p class="text-md font-semibold">Budget</p>
+          <p class="text-md font-semibold">Balance</p>
         </div>
       </div>
     </div>
 
-    <h2 class="mt-8 mb-4 text-2xl font-semibold">Transaction History</h2>
-    
-    <table class="border-collapse table-auto w-full text-sm text-left bg-white rounded-lg p-4">
-  <thead class="">
-    <tr>
-      <th class="border-b border-slate-100 p-4 pl-8 pb-3 font-semibold">No.</th>
-      <th class="border-b border-slate-100 p-4 pl-8 pb-3 font-semibold">Name</th>
-      <th class="border-b border-slate-100 p-4 pl-8 pb-3 font-semibold">Cost</th>
-      <th class="border-b border-slate-100 p-4 pl-8 pb-3 font-semibold">Date</th>
-      <th class="border-b border-slate-100 p-4 pl-8 pb-3 font-semibold">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="border-b border-slate-100 p-4 pl-8">1.</td>
-      <td class="border-b border-slate-100 p-4 pl-8">Buy Iphone</td>
-      <td class="border-b border-slate-100 p-4 pl-8">$1000</td>
-      <td class="border-b border-slate-100 p-4 pl-8">26 April 2023</td>
-      <td class="border-b border-slate-100 p-4 pl-8">
-        <div class="flex items-center space-x-1 cursor-pointer"><span>Remove</span><Icon class="text-red-500" width="16" height="16" icon="carbon:close-filled" /></div>
-      </td>
-    </tr>
-  
-  
-  </tbody>
-</table>
+    <TransactionHistory :transactions="transactions"/>
   </main>
 </template>
 
 <script setup>
-import AppHeader from './components/AppHeader.vue';
-import AppButtons from './components/AppButtons.vue';
-import AppInputs from './components/AppInputs.vue';
-import { Icon } from '@iconify/vue';
+import { ref } from 'vue'
+import { Icon } from '@iconify/vue'
+import { uuid } from 'vue-uuid';
+import AppHeader from './components/AppHeader.vue'
+import AppButtons from './components/AppButtons.vue'
+import AppInputs from './components/AppInputs.vue'
+import TransactionHistory from './components/TransactionHistory.vue'
+
+
+const budget = ref(0)
+const transactionName = ref('')
+const transactionCost = ref(null)
+const expenses = ref(0)
+const balance = ref(0)
+
+const transactions = ref([
+//   {
+//   id: uuid.v1(), name: 'Iphone', cost: 1000, date: '26 April 2023'
+// },{
+//   id: uuid.v1(), name: 'Car', cost: 3500, date: '21 May 2023'
+// },{
+//   id: uuid.v1(), name: 'Cigarettes', cost: 10, date: '13 February 2023'
+// }
+])
+
+
+const addTransaction = () => {
+  const options = { day: "numeric", month: "long", year: "numeric" };
+  const transaction = {
+    name: transactionName.value,
+    cost: transactionCost.value,
+    id: uuid.v1(),
+    date: new Date().toLocaleDateString(undefined, options),
+  }
+  balance.value = balance.value - transactionCost.value
+
+  if(transactionName.value && transactionCost.value) {   
+    transactions.value.unshift(transaction)
+    transactionName.value = ''
+    transactionCost.value = null
+    
+  }
+  
+}
+
+const setBudget = () => {
+  if(budget.value) {
+    budget.value = budget.value
+    balance.value = budget.value
+  }
+}
+
 
 </script>
 
