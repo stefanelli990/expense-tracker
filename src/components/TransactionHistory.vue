@@ -1,11 +1,12 @@
 <template>
-  <h2 v-if="transactions.length < 1" class="mt-8 text-center text-xl font-semibold">You don't have any transactions yet</h2>
+  <h2 v-if="transactions.length < 1" class="my-8 text-center text-xl font-semibold">You don't have any transactions yet</h2>
   <div v-else>
     <h2 class="mt-8 mb-4 text-xl font-semibold">Transaction History</h2>
-    <table class="border-collapse table-auto w-full text-sm text-left bg-white rounded-lg p-4 mb-4">
+    <div class="overflow-auto">
+      <table class="border-collapse table-auto w-full text-sm text-left bg-white rounded-lg p-4 mb-4 whitespace-nowrap">
       <thead class="">
         <tr>
-          <th class="border-b border-slate-100 p-4 pl-8 pb-3 font-semibold">#</th>
+          <th class="border-b border-slate-100 p-4 pl-8 pb-3 font-semibold">No.</th>
           <th class="border-b border-slate-100 p-4 pl-8 pb-3 font-semibold">Name</th>
           <th class="border-b border-slate-100 p-4 pl-8 pb-3 font-semibold">Cost</th>
           <th class="border-b border-slate-100 p-4 pl-8 pb-3 font-semibold">Date</th>
@@ -24,6 +25,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
   </div>
 </template>
 

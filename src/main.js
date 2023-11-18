@@ -11,6 +11,7 @@ const options = {
     timeout: 2000,
     closeButton: false,
     hideProgressBar: true,
+    
 };
 
 const app = createApp(App)
