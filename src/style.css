@@ -5,16 +5,31 @@
 @tailwind utilities;
 
 @layer base {
-    html {
-        font-family: 'Poppins', sans-serif;
+    * {
+        @apply font-poppins;
     }
     body {
         @apply bg-slate-50;
     }
+    
 }
 
 @layer components {
     .section-container {
         @apply mx-auto max-w-4xl px-4;
     }
+}
+
+@layer utilities {
+    .font-poppins {
+        font-family: 'Poppins', sans-serif;
+    }
+}
+
+/* toastification overrides */
+.Vue-Toastification__toast-body {
+    @apply text-sm flex items-center space-x-0 !important;
+}
+.Vue-Toastification__icon  {
+    @apply mr-2 !important;
 }
