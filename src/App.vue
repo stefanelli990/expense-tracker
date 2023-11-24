@@ -1,23 +1,54 @@
 <template>
   <AppHeader @open="openMenu"/>
   <main class="section-container">
-    <div class="fixed top-0 left-0 min-h-screen w-full duration-300 md:duration-0 bg-white md:bg-transparent md:static md:min-h-0 md:grid gap-4 md:grid-cols-2 md:translate-x-0" :class="menuIsVisible ? 'translate-x-0' : '-translate-x-full'">
-        <div class="bg-white rounded-xl p-6 pb-0 md:pb-6">
+
+    <!-- responsive inputs menu -->
+    <div class="fixed top-0 left-0 min-h-screen p-4 bg-white w-full duration-300 md:hidden" :class="menuIsVisible ? 'translate-x-0' : '-translate-x-full'">
+        <div class="flex justify-between items-center mb-10">
+          <h2 class="text-xl font-semibold">Add New Transaction</h2>
+          <button class="md:hidden" @click="closeMenu">
+            <Icon height="24" width="24" icon="mingcute:close-line" />
+          </button>
+        </div>
+        <div>
+          <div class="mb-4">
+            <h2 class="text-md font-semibold mb-4">Edit Budget</h2>
+            <div class="flex flex-col space-y-2 sm:flex-row sm:items-end sm:space-y-0 sm:space-x-2">
+                <AppInputs v-model="budget" type="number" label="Your Budget"/>
+                <AppButtons @click="setBudget">Set Budget</AppButtons>
+            </div>
+        </div>
+        <div class="">
+            <h2 class="text-md font-semibold mb-4">Add Transaction</h2>
+            <div class="flex flex-col sm:flex-row sm:items-end space-y-2 sm:space-y-0 sm:space-x-2">
+                <div class="flex-1 space-y-2 sm:space-y-0 sm:flex sm:flex-row sm:space-x-2">
+                  <AppInputs v-model="transactionName" type="text" label="Transaction Name"/>
+                  <AppInputs v-model="transactionCost" type="number" label="Transaction Cost"/>
+                </div>
+                <AppButtons @click="addTransaction">Add</AppButtons>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- inputs desktop -->
+    <div class="hidden md:flex space-x-4">
+      <div class="bg-white flex-1 rounded-xl p-6 pb-6">
             <div class="flex justify-between items-center mb-6">
               <h2 class="text-xl font-semibold">Edit Budget</h2>
               <button class="md:hidden" @click="closeMenu">
                 <Icon height="24" width="24" icon="mingcute:close-line" />
               </button>
             </div>
-            <div class="flex flex-col space-y-2 sm:flex-row sm:items-end sm:space-y-0 sm:space-x-2 md:flex-col md:items-stretch md:space-x-0 md:space-y-2 lg:flex-row lg:space-x-2 lg:space-y-0 lg:items-end">
+            <div class="flex flex-col items-stretch space-y-2 lg:flex-row lg:space-x-2 lg:space-y-0 lg:items-end">
                 <AppInputs v-model="budget" type="number" label="Your Budget"/>
                 <AppButtons @click="setBudget">Set Budget</AppButtons>
             </div>
         </div>
-        <div class="bg-white rounded-xl p-6">
-            <h2 class="text-xl font-semibold mb-6">Add New Transaction</h2>
+        <div class="bg-white flex-1 rounded-xl p-6">
+            <h2 class="text-xl font-semibold mb-6">Add Transaction</h2>
             <div class="flex flex-col space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2 lg:items-end">
-                <div class="space-y-2 sm:space-y-0 sm:flex sm:flex-row sm:space-x-2">
+                <div class="flex flex-1 space-x-2">
                   <AppInputs v-model="transactionName" type="text" label="Transaction Name"/>
                   <AppInputs v-model="transactionCost" type="number" label="Transaction Cost"/>
                 </div>
@@ -69,7 +100,6 @@
 import { ref, onMounted } from 'vue'
 import { Icon } from '@iconify/vue'
 import { uuid } from 'vue-uuid';
-import { useToast } from "vue-toastification";
 import AppHeader from './components/AppHeader.vue'
 import AppButtons from './components/AppButtons.vue'
 import AppInputs from './components/AppInputs.vue'
@@ -83,7 +113,7 @@ const expenses = ref(0)
 const balance = ref(0)
 const menuIsVisible = ref(false)
 
-const toast = useToast();
+
 
 const transactions = ref([])
 
@@ -121,7 +151,7 @@ const addTransaction = () => {
     date: new Date().toLocaleDateString(undefined, options),
   }
   if(!transactionName.value || !transactionCost.value) {   
-    toast.error("You must enter both fields")
+    console.log('error')
     return
   }
   // calculate balance and expenses
@@ -129,7 +159,7 @@ const addTransaction = () => {
   expenses.value = Number(expenses.value) + Number(transactionCost.value)
 
   closeMenu()
-  toast.success("New transaction has been added")
+  console.log("New transaction has been added")
   transactions.value.unshift(transactionData)
   transactionName.value = ''
   transactionCost.value = null
@@ -143,7 +173,7 @@ const deleteTransaction = (id,cost) => {
   transactions.value = transactions.value.filter(transaction => transaction.id !== id)
   expenses.value = expenses.value - cost
   balance.value = Number(balance.value) + Number(cost)
-  toast.success("Transaction has been deleted")
+  console.log("success")
   saveTransactions()
   saveExpenses()
   saveBalances()
@@ -151,7 +181,7 @@ const deleteTransaction = (id,cost) => {
 
 const setBudget = () => {
   if(!budget.value) {
-    toast.error("You must enter budget value")
+    console.log("error")
     return
   }
   initialBudget.value = Number(budget.value)

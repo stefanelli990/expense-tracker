@@ -25,11 +25,3 @@
         font-family: 'Poppins', sans-serif;
     }
 }
-
-/* toastification overrides */
-.Vue-Toastification__toast-body {
-    @apply text-sm flex items-center space-x-0 !important;
-}
-.Vue-Toastification__icon  {
-    @apply mr-2 !important;
-}
