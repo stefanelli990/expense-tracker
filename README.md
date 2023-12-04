@@ -11,7 +11,7 @@ Keep your finances in check with our Expense Tracker app, making financial manag
 - **Expense Management**: Easily add your expenses. Each entry includes details such as the expense name, amount, and date.
 - **Data Persistence**: Your expense data is securely stored in local storage, ensuring that your financial records persist even after refreshing the page.
 - **Budget Overview**: Gain insights into your spending habits with a comprehensive overview of your budget and expenses.
-- **Alerts and Notifications**: Receive real-time notifications for successful expense additions, helping you stay on top of your financial activities.
+- **Notifications**: Receive real-time notifications for successful expense additions, helping you stay on top of your financial activities.
 - **Responsive Layout**: Access your expense tracker on various devices with a mobile-friendly design, enabling you to manage your finances on the go.
 
 ## Technologies Used:
