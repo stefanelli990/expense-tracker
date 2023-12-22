@@ -14,7 +14,7 @@
           <div class="mb-4">
             <h2 class="text-md font-semibold mb-4">Edit Budget</h2>
             <div class="flex flex-col space-y-2 sm:flex-row sm:items-end sm:space-y-0 sm:space-x-2">
-                <AppInputs v-model="budget" type="number" label="Your Budget"/>
+                <AppInputs v-model="budget" type="number" label="Your Budget" id="budgetInput"/>
                 <AppButtons @click="setBudget">Set Budget</AppButtons>
             </div>
         </div>
@@ -113,9 +113,9 @@ const expenses = ref(0)
 const balance = ref(0)
 const menuIsVisible = ref(false)
 
-
-
 const transactions = ref([])
+
+
 
 // loading from local storage
 onMounted(() => {

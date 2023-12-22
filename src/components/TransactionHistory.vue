@@ -1,5 +1,5 @@
 <template>
-  <div v-if="transactions.length < 1" class=" text-center text-xl font-semibold flex justify-center items-center h-[calc(100vh-490px)]">Your transaction history is empty.</div>
+  <div v-if="transactions.length < 1" class="max-w-[300px] mx-auto text-center text-xl font-semibold flex justify-center items-center h-[calc(100vh-490px)]">Your transaction history is empty.</div>
   <div v-else>
     <h2 class="mt-8 mb-4 text-xl font-semibold">Transaction History</h2>
     <div class="overflow-auto">
