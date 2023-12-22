@@ -1,29 +1,30 @@
-# expense-tracker
+# Expense Tracker
 
-This template should help get you started developing with Vue 3 in Vite.
+## Description:
 
-## Recommended IDE Setup
+Keep your finances in check with our Expense Tracker app, making financial management a breeze. This minimalist app provides a clean interface, allowing you to effortlessly track, categorize, and analyze your expenses.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+**[Live Preview](https://sparkly-mandazi-90653e.netlify.app/)**: Try the Expense Tracker live.
 
-## Customize configuration
+## Features:
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- **Expense Management**: Easily add your expenses. Each entry includes details such as the expense name, amount, and date.
+- **Data Persistence**: Your expense data is securely stored in local storage, ensuring that your financial records persist even after refreshing the page.
+- **Budget Overview**: Gain insights into your spending habits with a comprehensive overview of your budget and expenses.
+- **Notifications**: Receive real-time notifications for successful expense additions, helping you stay on top of your financial activities.
+- **Responsive Layout**: Access your expense tracker on various devices with a mobile-friendly design, enabling you to manage your finances on the go.
 
-## Project Setup
+## Technologies Used:
 
-```sh
-npm install
-```
+- **Vue.js** for building the frontend of the application.
+- **Tailwind CSS** for styling and layout design.
+- **Pinia** for state management.
 
-### Compile and Hot-Reload for Development
+## Installation
 
-```sh
-npm run dev
-```
+To run this project locally, follow these steps:
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+1. Clone the repository.
+2. Install the required dependencies using `npm install`.
+3. Start the development server with `npm run dev`.
+4. Open your browser and navigate to `http://localhost:5173` to use the app.
