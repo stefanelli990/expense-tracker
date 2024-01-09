@@ -1,5 +1,5 @@
 {
-  "name": "expense-tracker",
+  "name": "expense-vue",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^10.7.1",
+    "pinia": "^2.1.7",
     "vue": "^3.3.4",
     "vue-uuid": "^3.0.0"
   },
