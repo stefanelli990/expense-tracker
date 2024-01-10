@@ -3,21 +3,21 @@
     <!-- responsive inputs menu -->
     <div class="fixed top-0 left-0 min-h-screen p-4 z-10 bg-white w-full duration-300 md:hidden dark:bg-slate-900" :class="storeTransactions.menuIsVisible ? 'translate-x-0' : '-translate-x-full'">
         <div class="flex justify-between items-center mb-10">
-          <h2 class="text-xl font-semibold">Add New Transaction</h2>
+          <h2 class="text-xl font-bold">Add New Transaction</h2>
           <button class="md:hidden" @click="storeTransactions.closeMenu">
-            <Icon height="24" width="24" icon="mingcute:close-line" />
+            <Icon height="24" width="24" icon="mingcute:close-fill" />
           </button>
         </div>
         <div>
-          <div class="mb-4">
-            <h2 class="text-md font-semibold mb-4">Edit Budget</h2>
+          <div class="mb-8">
+            <h2 class="text-lg font-semibold mb-4">Edit Budget</h2>
             <div class="flex flex-col space-y-2 sm:flex-row sm:items-end sm:space-y-0 sm:space-x-2">
                 <AppInputs v-model="storeTransactions.budget" type="number" label="Your Budget" id="budgetInput"/>
                 <AppButtons @click="storeTransactions.setBudget">Set Budget</AppButtons>
             </div>
         </div>
         <div class="">
-            <h2 class="text-md font-semibold mb-4">Add Transaction</h2>
+            <h2 class="text-lg font-semibold mb-4">Add Transaction</h2>
             <div class="flex flex-col sm:flex-row sm:items-end space-y-2 sm:space-y-0 sm:space-x-2">
                 <div class="flex-1 space-y-2 sm:space-y-0 sm:flex sm:flex-row sm:space-x-2">
                   <AppInputs v-model="storeTransactions.transactionName" type="text" label="Transaction Name"/>

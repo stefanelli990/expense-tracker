@@ -25,8 +25,8 @@
         <div>
           <div class="flex items-center space-x-1">
             <h2 class="text-xl font-semibold">${{ Number(storeTransactions.balance) }}</h2><div>
-              <Icon v-if="storeTransactions.balance < 0"  width="20" height="20" class="text-red-500" icon="ph:arrow-down-left-bold" />
-              <Icon v-else width="20" height="20" class="text-green-500" icon="ph:arrow-up-left-bold" />
+              <Icon v-if="storeTransactions.balance < 0"  width="20" height="20" class="text-red-500" icon="mingcute:arrow-left-down-fill"  />
+              <Icon v-else width="20" height="20" class="text-green-500" icon="mingcute:arrow-left-up-fill"  />
             </div>
           </div>
           <p class="text-sm font-semibold">Balance</p>
