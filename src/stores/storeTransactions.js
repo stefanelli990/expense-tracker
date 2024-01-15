@@ -1,5 +1,9 @@
 import { defineStore } from 'pinia'
 import { v4 as uuidv4 } from "uuid"
+import { useToast } from "vue-toastification"
+
+const toast = useToast()
+
 export const useStoreTransactions = defineStore('storeTransactions', {
   state: () => {
     return { 
@@ -27,6 +31,7 @@ export const useStoreTransactions = defineStore('storeTransactions', {
         }
         if(!this.transactionName || !this.transactionCost) {   
             console.log('error')
+            toast.error("Please, fill the inputs");
             return
         }
         // calculate balance and expenses
@@ -38,6 +43,7 @@ export const useStoreTransactions = defineStore('storeTransactions', {
         this.transactionName = ''
         this.transactionCost = null
         this.saveToLocalStorage()
+        toast.success("Transaction added successfully.");
     },
     deleteTransaction(id,cost) {
         console.log("transaction deleted")
@@ -46,10 +52,10 @@ export const useStoreTransactions = defineStore('storeTransactions', {
         this.expenses = this.expenses - cost
         this.balance = Number(this.balance) + Number(cost)
         this.saveToLocalStorage()
+        toast.info("Transaction has been deleted.");
     },
     setBudget() {
         if(!this.budget) {
-            console.log("error")
             return
           }
           this.initialBudget = Number(this.budget)

@@ -14,7 +14,6 @@
         </tr>
       </thead>
       <tbody>
-        <TransitionGroup name="transactions">
         <tr v-for="(transaction, index) in storeTransactions.transactions" :key="transaction.id" class="border-b dark:border-b-slate-700 last:border-none">
           <td class="p-4 pl-8">{{ index + 1 }}.</td>
           <td class="p-4 pl-8">{{ transaction.name }}</td>
@@ -22,9 +21,8 @@
           <td class="p-4 pl-8">{{ transaction.date }}</td>
           <td class="p-4 pl-8">
             <div class="flex items-center space-x-2 cursor-pointer" @click="storeTransactions.deleteTransaction(transaction.id, transaction.cost)"><span>Remove</span><Icon class="text-red-500" width="16" height="16" icon="carbon:close-filled" /></div>
-          </td>
+        </td>
         </tr>
-      </TransitionGroup>
       </tbody>
     </table>
     </div>
@@ -40,27 +38,3 @@ const storeTransactions = useStoreTransactions();
 const props = defineProps(['transactions'])
 
 </script>
-
-
-<style scoped>
-
-
-
-.transactions-enter-from {
-  opacity: 0;
-  translate: 0 -100%;
-}
-.transactions-enter-to {
-  opacity: 1;
-  translate: 0 0;
-}
-.transactions-enter-active,
-.transactions-leave-active,
-.transactions-move {
-  transition: all 0.3s;
-}
-.transactions-leave-active { position: absolute; }
-.transactions-leave-from { opacity: 1; }
-.transactions-leave-to { opacity: 0; }
-
-</style>
