@@ -29,21 +29,27 @@ export const useStoreTransactions = defineStore('storeTransactions', {
             id: uuidv4(),
             date: new Date().toLocaleDateString(undefined, options)
         }
-        if(!this.transactionName || !this.transactionCost) {   
+        if(!this.transactionName && !this.transactionCost) {   
             console.log('error')
-            toast.error("Please, fill the inputs");
-            return
+            toast.error("Please fill in both the transaction name and cost.")
+         
+        } else if(!this.transactionName) {
+            toast.error("Please enter a transaction name.")
+        } else if(!this.transactionCost) {
+            toast.error("Please, enter a transaction cost.")
         }
         // calculate balance and expenses
-        this.balance = this.balance - this.transactionCost
+        else {
+            this.balance = this.balance - this.transactionCost
         this.expenses = Number(this.expenses) + Number(this.transactionCost)
         this.closeMenu()
-        console.log("New transaction has been added")
+        console.log("New transaction has been added.")
         this.transactions.unshift(transactionData)
         this.transactionName = ''
         this.transactionCost = null
         this.saveToLocalStorage()
-        toast.success("Transaction added successfully.");
+        toast.success("Transaction added successfully.")
+        }
     },
     deleteTransaction(id,cost) {
         console.log("transaction deleted")
@@ -52,15 +58,16 @@ export const useStoreTransactions = defineStore('storeTransactions', {
         this.expenses = this.expenses - cost
         this.balance = Number(this.balance) + Number(cost)
         this.saveToLocalStorage()
-        toast.info("Transaction has been deleted.");
+        toast.warning("Transaction has been deleted.");
     },
     setBudget() {
-        if(!this.budget) {
-            return
-          }
+        if(this.budget === '') {
+            toast.error("Please fill in the budget input.");
+          } else {
           this.initialBudget = Number(this.budget)
           this.balance = this.budget
           this.saveToLocalStorage()
+        }
     },
     openMenu() {
         this.menuIsVisible = true

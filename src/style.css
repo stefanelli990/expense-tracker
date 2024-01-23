@@ -25,3 +25,12 @@
 .Vue-Toastification__icon  {
     @apply mr-2 w-4 !important;
 }
+
+.Vue-Toastification__fade-leave-active,
+.Vue-Toastification__fade-enter-active {
+    animation-duration: 400ms !important;
+}
+
+.Vue-Toastification__toast--warning {
+   background-color: #e9b414 !important;
+}
