@@ -13,7 +13,6 @@ Keep your finances in check with our ExpenseVue app, making financial management
 - **Budget Overview**: Gain insights into your spending habits with a comprehensive overview of your budget and expenses.
 - **Notifications**: Receive real-time notifications for successful expense additions, helping you stay on top of your financial activities.
 - **Responsive Layout**: Access on various devices with a mobile-friendly design, enabling you to manage your finances on the go.
-- **Dark Mode**: Enjoy a visually comfortable experience with the option to switch to Dark Mode.
 
 ## Technologies Used:
 

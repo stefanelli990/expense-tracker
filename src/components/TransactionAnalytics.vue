@@ -1,7 +1,7 @@
 <template>
-    <div class="max-w-5xl mx-auto px-4 space-y-4 my-8 md:my-4 md:flex md:space-y-0 md:space-x-4">
-      <div class="bg-white rounded-xl p-4 flex items-center space-x-4 flex-1 dark:bg-slate-800/50">
-        <div class="bg-blue-100 h-20 w-20 rounded-xl flex justify-center items-center dark:bg-blue-400/25">
+    <div class="max-w-5xl mx-auto px-4 space-y-4 md:flex md:space-y-0 md:space-x-4 md:mt-4">
+      <div class="bg-white rounded-xl p-4 flex items-center space-x-4 flex-1">
+        <div class="bg-blue-100 h-20 w-20 rounded-xl flex justify-center items-center">
           <Icon  class="text-blue-500 text-4xl" icon="ph:wallet-fill" />
         </div>
         <div>
@@ -9,8 +9,8 @@
           <p class="text-sm font-semibold">Budget</p>
         </div>
       </div>
-      <div class="bg-white rounded-xl p-4 flex items-center space-x-4 flex-1 dark:bg-slate-800/50">
-        <div class="bg-yellow-100 h-20 w-20 rounded-xl flex justify-center items-center dark:bg-yellow-300/25">
+      <div class="bg-white rounded-xl p-4 flex items-center space-x-4 flex-1">
+        <div class="bg-yellow-100 h-20 w-20 rounded-xl flex justify-center items-center">
           <Icon class="text-yellow-500 text-4xl" icon="fluent:money-hand-16-filled" />
         </div>
         <div>
@@ -18,8 +18,8 @@
           <p class="text-sm font-semibold">Expenses</p>
         </div>
       </div>
-      <div class="bg-white rounded-xl p-4 flex items-center space-x-4 flex-1 dark:bg-slate-800/50">
-        <div class="h-20 w-20 rounded-xl flex justify-center items-center" :class="storeTransactions.balance < 0 ? 'bg-red-100 dark:bg-red-300/25' : 'bg-green-100 dark:bg-green-300/25'">
+      <div class="bg-white rounded-xl p-4 flex items-center space-x-4 flex-1">
+        <div class="h-20 w-20 rounded-xl flex justify-center items-center" :class="storeTransactions.balance < 0 ? 'bg-red-100' : 'bg-green-100'">
           <Icon  class="text-4xl" :class="storeTransactions.balance < 0 ? 'text-red-500' : 'text-green-500'" icon="fa:dollar" />
         </div>
         <div>
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="flex flex-col md:hidden">
-        <AppButtons @click="storeTransactions.openMenu">Add Transaction</AppButtons>
+        <AppButtons @click="storeTransactions.openMenu">Add New Transaction</AppButtons>
       </div>
     </div>
 </template>

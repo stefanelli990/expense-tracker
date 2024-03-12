@@ -9,7 +9,7 @@
         @apply font-poppins;
     }
     body {
-        @apply bg-slate-50 text-sm sm:text-base dark:bg-slate-900 dark:text-white;
+        @apply bg-slate-50 text-sm sm:text-base;
     } 
 }
 @layer utilities {
