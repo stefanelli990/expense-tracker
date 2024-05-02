@@ -1,10 +1,10 @@
-# ExpenseVue
+# Expense Tracker
 
 ## Description:
 
-Keep your finances in check with our ExpenseVue app, making financial management a breeze. This minimalist app provides a clean interface, allowing you to effortlessly track, categorize, and analyze your expenses.
+Keep your finances in check with our Expense Tracker, making financial management a breeze. This minimalist app provides a clean interface, allowing you to effortlessly track, categorize, and analyze your expenses.
 
-**[Live Preview](https://sparkly-mandazi-90653e.netlify.app/)**: Try the ExpenseVue live.
+**[Live Preview](https://sparkly-mandazi-90653e.netlify.app/)**: Try the Expense Tracker live.
 
 ## Features:
 
