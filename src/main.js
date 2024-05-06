@@ -5,7 +5,8 @@ import "vue-toastification/dist/index.css"
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
-import { useStoreTransactions } from './stores/storeTransactions' 
+import { useStoreTransactions } from './stores/storeTransactions'
+import './registerServiceWorker'
 
 const app = createApp(App)
 const pinia = createPinia()
